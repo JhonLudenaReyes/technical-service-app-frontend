@@ -1,0 +1,49 @@
+<div class="container" [style]="{ margin: '2rem', width: '61.5rem' }">
+  <h2>Listado de clientes</h2>
+  <i class="pi pi-user-plus" (click)="addClient()"> Agregar cliente</i>
+  <hr />
+  <p-table [value]="clients" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Cedula</th>
+        <th>RUC</th>
+        <th>Ciudad</th>
+        <th>Género</th>
+        <th>Celular</th>
+        <th>Fecha nacimiento</th>
+        <th>Direccion</th>
+        <th>email</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-client>
+      <tr>
+        <td>{{ client.name }}</td>
+        <td>{{ client.lastName }}</td>
+        <td>{{ client.identificationCard }}</td>
+        <td>{{ client.ruc }}</td>
+        <td>{{ client.cityName }}</td>
+        <td>{{ client.genderName }}</td>
+        <td>{{ client.cellPhone }}</td>
+        <td>{{ client.dateOfBirth }}</td>
+        <td>{{ client.address }}</td>
+        <td>{{ client.email }}</td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <i class="pi pi-user-edit" (click)="editClient(client)"></i>
+            </div>
+            <div class="col">
+              <i
+                class="pi pi-trash"
+                (click)="deleteClient(client.clientId)"
+              ></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

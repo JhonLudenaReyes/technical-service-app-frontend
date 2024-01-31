@@ -1,0 +1,51 @@
+<p-card class="ProfileRegisterCard">
+  <i class="pi pi-arrow-left" (click)="clearBackList()">Volver</i>
+
+  <h3 class="ProfileTitle"><b>Registro de roles / perfiles</b></h3>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="grid p-fluid">
+          <div class="row">
+            <div class="col">
+              <div class="col-12 md:col-4">
+                <h4>Roles</h4>
+                <p-dropdown
+                  [options]="roles"
+                  [(ngModel)]="selectedRole"
+                  name="dropdown"
+                  optionLabel="name"
+                  [showClear]="true"
+                  placeholder="Seleccione un rol"
+                ></p-dropdown>
+                <hr />
+                <h4>Permisos</h4>
+                <div
+                  *ngFor="let permissionCheck of permissionsCheck"
+                  class="field-checkbox"
+                >
+                  <p-checkbox
+                    [label]="permissionCheck.name"
+                    name="group"
+                    [value]="permissionCheck"
+                    [(ngModel)]="selectedPermissionsCheck"
+                  ></p-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Guardar los cambios"
+            class="p-button-primary"
+            (click)="save()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-card>

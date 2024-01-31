@@ -1,0 +1,42 @@
+<p-toast></p-toast>
+<p-card class="PersonRegisterCard">
+  <i class="pi pi-arrow-left" (click)="clearBackList()">Volver</i>
+
+  <h3 class="PersonTitle"><b>Registro de géneros</b></h3>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="grid p-fluid">
+          <div class="row">
+            <div class="col">
+              <div class="col-12 md:col-4">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon"
+                    ><i class="pi pi-user"></i
+                  ></span>
+                  <input
+                    type="text"
+                    name="genderName"
+                    [(ngModel)]="genderName"
+                    pInputText
+                    placeholder="Género"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Guardar los cambios"
+            class="p-button-primary"
+            (click)="save()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-card>
