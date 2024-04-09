@@ -13,8 +13,8 @@ import { ImageModule } from 'primeng/image';
 
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
+import { PersonRoutingModule } from './person-routing.module';
 
 @NgModule({
   declarations: [PersonRegisterComponent, ListPersonComponent],
@@ -28,9 +28,8 @@ import { MessagesModule } from 'primeng/messages';
     CardModule,
     ImageModule,
     ToastModule,
-    BrowserAnimationsModule,
     MessagesModule,
+    PersonRoutingModule,
   ],
-  exports: [PersonRegisterComponent, ListPersonComponent],
 })
 export class PersonModule {}

@@ -13,10 +13,10 @@ import { ImageModule } from 'primeng/image';
 
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { GenderRoutingModule } from './gender-routing.module';
 
 @NgModule({
   declarations: [GenderRegisterComponent, GendersListComponent],
@@ -30,9 +30,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     CardModule,
     ImageModule,
     ToastModule,
-    BrowserAnimationsModule,
     MessagesModule,
     ConfirmDialogModule,
+    GenderRoutingModule,
   ],
   exports: [GenderRegisterComponent, GendersListComponent],
 })

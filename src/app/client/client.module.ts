@@ -14,9 +14,9 @@ import { CalendarModule } from 'primeng/calendar';
 
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 import { ClientSearchComponent } from './components/client-search/client-search.component';
+import { ClientRoutingModule } from './client-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,9 +34,9 @@ import { ClientSearchComponent } from './components/client-search/client-search.
     CardModule,
     ImageModule,
     ToastModule,
-    BrowserAnimationsModule,
     MessagesModule,
     CalendarModule,
+    ClientRoutingModule,
   ],
 })
 export class ClientModule {}

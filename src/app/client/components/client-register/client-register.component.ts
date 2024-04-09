@@ -26,6 +26,7 @@ export class ClientRegisterComponent implements OnInit {
   ruc: string = '';
   email: string = '';
   dateOfBirth: Date = new Date();
+  hobby: string = '';
 
   constructor(
     private clientService: ClientService,
@@ -45,17 +46,18 @@ export class ClientRegisterComponent implements OnInit {
   }
 
   save() {
-    /*if (!this.clientId) {
+    if (!this.clientId) {
       this.client = {
         ruc: this.ruc,
         email: this.email,
         dateOfBirth: this.dateOfBirth,
+        hobby: this.hobby,
       };
 
       this.clientService
-        .savePerson(this.client)
+        .saveClient(this.client)
         .subscribe((response) => console.log(response));
-    } else {
+    } /* else {
       this.person = {
         personId: this.personId,
         name: this.name,
@@ -70,9 +72,10 @@ export class ClientRegisterComponent implements OnInit {
         .subscribe((response) => this.clearPersonService());
     }
 
+    */
     this.addConfirmation();
 
-    this.clearForm();*/
+    this.clearForm();
   }
 
   //METODO QUE LIMPIA LA VARIABLE PERSON DEL SERVICIO
@@ -98,11 +101,11 @@ export class ClientRegisterComponent implements OnInit {
 
   // MUESTRA MENSAJE DE CONFIRMACION DEL REGISTRO GUARDADO
   addConfirmation() {
-    /*    this.messageService.add({
+    this.messageService.add({
       severity: 'success',
       summary: 'Estado de los datos',
       detail: 'Sus datos se han guardado satisfactoriamente',
-    });*/
+    });
   }
 
   //LIMPIA EL FORMULARIO DE REGISTROS

@@ -25,12 +25,12 @@ export class ListPersonComponent implements OnInit {
   }
 
   addPerson() {
-    this.router.navigate(['person/register']);
+    this.router.navigate(['person/person-register']);
   }
 
   editPerson(person: Person) {
     this.personService.addPerson(person);
-    this.router.navigate(['person/register']);
+    this.router.navigate(['person/person-register']);
   }
 
   deletePerson(personId: number) {

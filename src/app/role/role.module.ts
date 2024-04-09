@@ -13,8 +13,8 @@ import { RoleRegisterComponent } from './components/role-register/role-register.
 
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
+import { RoleRoutingModule } from './role-routing.module';
 
 @NgModule({
   declarations: [RolesListComponent, RoleRegisterComponent],
@@ -28,8 +28,8 @@ import { MessagesModule } from 'primeng/messages';
     CardModule,
     ImageModule,
     ToastModule,
-    BrowserAnimationsModule,
     MessagesModule,
+    RoleRoutingModule,
   ],
   exports: [RolesListComponent],
 })

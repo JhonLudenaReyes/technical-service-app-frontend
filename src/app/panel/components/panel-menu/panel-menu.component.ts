@@ -22,8 +22,6 @@ export class PanelMenuComponent implements OnInit, DoCheck {
       this.permissionsLogin = JSON.parse(
         localStorage.getItem('permissionsLogin') || '[]'
       );
-
-      console.log(this.permissionsLogin);
       this.addMenu(this.permissionsLogin);
     }
   }
@@ -38,8 +36,6 @@ export class PanelMenuComponent implements OnInit, DoCheck {
       this.habilitar = true;
       this.addMenu(this.permissionsLogin);
     }
-
-    console.log(this.userLogin);
   }
 
   addMenu(permissions: Profile[]) {
@@ -122,14 +118,13 @@ export class PanelMenuComponent implements OnInit, DoCheck {
       profile = false;
     }
 
-    console.log(permissions);
-    permissions.map((permission) => {
+    permissions.map(() => {
       this.items = [
         {
           disabled: user,
           label: 'Usuario',
           icon: 'pi pi-fw pi-users',
-          routerLink: 'user/register',
+          routerLink: 'user/users-list',
         },
         {
           disabled: person,

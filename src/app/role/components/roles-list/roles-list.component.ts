@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   providers: [MessageService],
 })
 export class RolesListComponent implements OnInit {
-  roles: Role[] = [];
+  roles!: Role[];
 
   constructor(
     private roleService: RoleService,

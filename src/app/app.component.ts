@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from './navigation/services/navigation.service';
+import { Permission } from './permission/interfaces/permission.interface';
+import { Profile } from './profile/interfaces/profile.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,29 +12,19 @@ export class AppComponent implements OnInit {
   title = 'technical-service';
 
   navigationRefresh: boolean = false;
-  panelState!: boolean;
+
+  permissionsLogin!: Profile[];
 
   constructor(private navigationService: NavigationService) {}
-  ngOnInit(): void {
-    //CONSULTAR SI EXISTE PARAMETROS EN EL LOCALSTORAGE
-    if (localStorage.length > 0) {
-      let storeState = JSON.parse(localStorage.getItem('panelState') || '');
-      if (storeState == '') {
-        this.panelState = false;
-      } else {
-        this.panelState = storeState.panelState;
-      }
-    }
-  }
+  ngOnInit(): void {}
 
   ngDoCheck(): void {
     if (this.navigationRefresh != this.navigationService._navigationRefresh) {
       this.navigationRefresh = this.navigationService._navigationRefresh;
-      if (localStorage.length > 0) {
-        console.log(JSON.parse(localStorage.getItem('panelState') || ''));
-        let storeState = JSON.parse(localStorage.getItem('panelState') || '');
-        this.panelState = storeState.panelState;
-      }
     }
+
+    this.permissionsLogin = JSON.parse(
+      localStorage.getItem('permissionsLogin') || '[]'
+    );
   }
 }

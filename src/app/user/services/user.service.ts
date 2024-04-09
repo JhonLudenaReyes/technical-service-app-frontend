@@ -10,6 +10,14 @@ import { Profile } from 'src/app/profile/interfaces/profile.interface';
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  /*Obtiene la lista completa de usuarios registrados
+  con la persona y el rol que les pertenecen*/
+  getUsersPersonRole(): Observable<UserPersonRole[]> {
+    return this.http.get<UserPersonRole[]>(
+      `https://localhost:7071/users-person-role`
+    );
+  }
+
   getUserLogIn(user: string, password: string): Observable<UserPersonRole> {
     return this.http.get<UserPersonRole>(
       `https://localhost:7071/Session/Login/User/${user}/${password}`

@@ -12,6 +12,7 @@ export interface ClientData {
   cityName: string;
   address: string;
   dateOfBirth: string;
+  hobby: string;
   email: string;
   state?: string;
 }

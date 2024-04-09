@@ -29,7 +29,7 @@ export class NavigationComponent implements OnInit {
   }
 
   iniciarSesion() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['user/login']);
     this.items;
   }
 
@@ -90,6 +90,6 @@ export class NavigationComponent implements OnInit {
     localStorage.removeItem('panelState');
     localStorage.removeItem(`permissionsLogin`);
     this.items = [];
-    this.router.navigate(['/login']);
+    this.router.navigate(['user/login']);
   }
 }

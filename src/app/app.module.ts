@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+//Rutas principales
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+
 import { NavigationModule } from './navigation/navigation.module';
 import { LandingModule } from './landing/landing.module';
 import { UserModule } from './user/user.module';
@@ -16,11 +19,16 @@ import { PanelModule } from './panel/panel.module';
 import { ProfileModule } from './profile/profile.module';
 import { ClientModule } from './client/client.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from 'primeng/messages';
+
 @NgModule({
   declarations: [AppComponent, RefreshDirective],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MessagesModule,
     AppRoutingModule,
     PanelModule,
     NavigationModule,

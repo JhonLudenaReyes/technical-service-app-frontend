@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministratorComponent } from './dashboard/components/administrator/administrator.component';
+/*import { AdministratorComponent } from './dashboard/components/administrator/administrator.component';
 import { LandingComponent } from './landing/components/landing/landing.component';
 import { ListPersonComponent } from './person/components/list-person/list-person.component';
 import { PersonRegisterComponent } from './person/components/person-register/person-register.component';
 import { LoginComponent } from './user/components/login/login.component';
-import { UserComponent } from './user/components/user/user.component';
 import { RolesListComponent } from './role/components/roles-list/roles-list.component';
 import { GenderRegisterComponent } from './gender/components/gender-register/gender-register.component';
 import { GendersListComponent } from './gender/components/genders-list/genders-list.component';
@@ -14,21 +13,38 @@ import { ProfileRegisterComponent } from './profile/components/profile-register/
 import { ClientRegisterComponent } from './client/components/client-register/client-register.component';
 import { ClientsListComponent } from './client/components/clients-list/clients-list.component';
 import { ClientSearchComponent } from './client/components/client-search/client-search.component';
+*/
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingComponent,
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./landing/landing.module').then((m) => m.LandingModule),
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
-    path: 'user/register',
-    component: UserComponent,
+    path: 'client',
+    loadChildren: () =>
+      import('./client/client.module').then((m) => m.ClientModule),
   },
+  {
+    path: 'person',
+    loadChildren: () =>
+      import('./person/person.module').then((m) => m.PersonModule),
+  },
+  {
+    path: 'gender',
+    loadChildren: () =>
+      import('./gender/gender.module').then((m) => m.GenderModule),
+  },
+  {
+    path: 'role',
+    loadChildren: () => import('./role/role.module').then((m) => m.RoleModule),
+  },
+  /*
   {
     path: 'dashboard/administrator',
     component: AdministratorComponent,
@@ -72,15 +88,13 @@ const routes: Routes = [
   {
     path: 'profile/profile-register',
     component: ProfileRegisterComponent,
-  },
-  {
+  }*/ {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: '',
   },
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
