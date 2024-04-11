@@ -1,7 +1,56 @@
-<div class="mt-4">
+<div class="m-5">
   <h2>Listado de roles</h2>
   <i class="pi pi-user-plus" (click)="addRoles()"> Agregar rol</i>
   <hr />
+  <p-table
+    [value]="roles"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 20]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 15%; text-align-last: center">Cod</th>
+        <th style="width: 50%; text-align-last: center">Descripción</th>
+        <th style="width: 15%; text-align-last: center">Estado</th>
+        <th style="width: 20%; text-align-last: center">Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-role>
+      <tr>
+        <td style="text-align-last: center">{{ role.roleId }}</td>
+        <td style="text-align-last: center">{{ role.roleName }}</td>
+        <td style="text-align-last: center">{{ role.state }}</td>
+        <td style="text-align-last: center">
+          <div class="row">
+            <div class="col">
+              <i class="pi pi-user-edit" (click)="editRole(role)"> </i>
+            </div>
+            <div class="col">
+              <i class="pi pi-trash" (click)="deleteRole(role)"> </i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button
+        type="button"
+        icon="pi pi-plus"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button
+        type="button"
+        icon="pi pi-cloud"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-table>
 </div>
 
 <!-- <div class="container" [style]="{ margin: '2rem', width: '30rem' }">
