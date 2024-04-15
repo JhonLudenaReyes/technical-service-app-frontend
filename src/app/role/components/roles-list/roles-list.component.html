@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div class="m-5">
   <h2>Listado de roles</h2>
   <i class="pi pi-user-plus" (click)="addRoles()"> Agregar rol</i>
@@ -30,7 +32,7 @@
               <i class="pi pi-user-edit" (click)="editRole(role)"> </i>
             </div>
             <div class="col">
-              <i class="pi pi-trash" (click)="deleteRole(role)"> </i>
+              <i class="pi pi-trash" (click)="deleteRole($event, role)"> </i>
             </div>
           </div>
         </td>

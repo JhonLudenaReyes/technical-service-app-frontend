@@ -28,7 +28,6 @@ export class RoleRegisterComponent implements OnInit {
 
   role!: Role;
   roleId!: number;
-  //roleName: string = '';
 
   constructor(
     private readonly fb: FormBuilder,
@@ -43,7 +42,9 @@ export class RoleRegisterComponent implements OnInit {
 
     if (this.roleService.role) {
       this.roleId = this.roleService.role.roleId || 0;
-      //this.roleName = this.roleService.role.roleName;
+      this.roleForm.patchValue({
+        roleName: this.roleService.role.roleName,
+      });
     }
   }
 
@@ -61,41 +62,39 @@ export class RoleRegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.roleService.saveRole(this.roleForm.value).subscribe({
-      next: () => {
-        this.addConfirmation();
-        this.roleForm.reset();
-      },
-      error: (error) => {
-        console.log(error);
-        this.addError();
-      },
-    });
-
-    /*
     if (!this.roleId) {
       this.role = {
-        roleName: this.roleName,
+        roleName: this.roleForm.get('roleName')?.value,
       };
 
-      this.roleService
-        .saveRole(this.role)
-        .subscribe((response) => console.log(response));
+      this.roleService.saveRole(this.role).subscribe({
+        next: () => {
+          this.addConfirmation();
+          this.roleForm.reset();
+        },
+        error: (error) => {
+          console.log(error);
+          this.addError();
+        },
+      });
     } else {
       this.role = {
         roleId: this.roleId,
-        roleName: this.roleName,
+        roleName: this.roleForm.get('roleName')?.value,
       };
 
-      this.roleService
-        .updateRole(this.role)
-        .subscribe((response) => this.clearRoleService());
+      this.roleService.updateRole(this.role).subscribe({
+        next: () => {
+          this.addConfirmation();
+          this.roleForm.reset();
+          this.clearRoleService;
+        },
+        error: (error) => {
+          console.log(error);
+          this.addError();
+        },
+      });
     }
-
-    this.addConfirmation();
-
-    this.clearForm();
-    */
   }
 
   //METODO QUE LIMPIA LA VARIABLE PERSON DEL SERVICIO

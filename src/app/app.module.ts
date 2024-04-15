@@ -21,6 +21,7 @@ import { ClientModule } from './client/client.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
+import { SidebarModule } from './sidebar/sidebar.module';
 
 @NgModule({
   declarations: [AppComponent, RefreshDirective],
@@ -40,6 +41,7 @@ import { MessagesModule } from 'primeng/messages';
     ClientModule,
     RoleModule,
     ProfileModule,
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

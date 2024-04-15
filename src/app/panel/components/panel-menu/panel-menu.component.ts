@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+
 import { UserPersonRole } from 'src/app/user/interfaces/userPersonRole';
 import { Profile } from 'src/app/profile/interfaces/profile.interface';
 
@@ -16,7 +16,8 @@ export class PanelMenuComponent implements OnInit, DoCheck {
   userLogin!: UserPersonRole;
   permissionsLogin!: Profile[];
 
-  constructor(private router: Router) {}
+  constructor() {}
+
   ngDoCheck(): void {
     if (this.permissionsLogin.length < 1) {
       this.permissionsLogin = JSON.parse(

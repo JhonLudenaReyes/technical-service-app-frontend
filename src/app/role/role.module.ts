@@ -17,6 +17,9 @@ import { RoleRegisterComponent } from './components/role-register/role-register.
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 import { RoleRoutingModule } from './role-routing.module';
 
 @NgModule({
@@ -34,6 +37,7 @@ import { RoleRoutingModule } from './role-routing.module';
     InputGroupAddonModule,
     ToastModule,
     MessagesModule,
+    ConfirmDialogModule,
     RoleRoutingModule,
     ReactiveFormsModule,
   ],

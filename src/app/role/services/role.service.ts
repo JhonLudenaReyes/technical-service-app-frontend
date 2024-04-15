@@ -32,4 +32,10 @@ export class RoleService {
       role
     );
   }
+
+  deleteRole(roleId: number): Observable<any> {
+    return this.http.delete<any>(
+      `https://localhost:7071/api/roles/delete-log-role/${roleId}`
+    );
+  }
 }
