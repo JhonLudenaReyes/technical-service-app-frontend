@@ -11,11 +11,8 @@ import {
   ConfirmEventType,
 } from 'primeng/api';
 
-<<<<<<< HEAD
-=======
 import { HttpErrorResponse } from '@angular/common/http';
 
->>>>>>> project-v15
 @Component({
   selector: 'app-roles-list',
   templateUrl: './roles-list.component.html',
@@ -74,11 +71,7 @@ export class RolesListComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-<<<<<<< HEAD
-            this.addError();
-=======
             this.addError(error);
->>>>>>> project-v15
           },
         });
       },
@@ -86,30 +79,18 @@ export class RolesListComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Rechazado',
-<<<<<<< HEAD
-          detail: 'Has rechazado',
-=======
           detail: `Has rechazado eliminar ${role.roleName} de la lista de roles`,
->>>>>>> project-v15
         });
       },
     });
   }
 
   // MUESTRA MENSAJE DE ERROR AL PROCESAR EL REGISTRO
-<<<<<<< HEAD
-  addError() {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Estado de los datos',
-      detail: 'Sus datos no han podido ser procesados',
-=======
   addError(error: HttpErrorResponse) {
     this.messageService.add({
       severity: 'error',
       summary: 'Sus datos no han podido ser procesados',
       detail: `Error: ${error.statusText}, ${error.message}.`,
->>>>>>> project-v15
     });
   }
 }
