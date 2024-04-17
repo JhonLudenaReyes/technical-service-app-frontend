@@ -1,42 +1,44 @@
 <p-toast></p-toast>
-<p-card class="RoleRegisterCard">
-  <i class="pi pi-arrow-left" (click)="clearBackList()">Volver</i>
-
-  <h3 class="RoleTitle"><b>Registro de roles</b></h3>
+<p-card class="mt-5 d-flex justify-content-center">
+  <i class="m-3 pi pi-arrow-left" (click)="clearBackList()">Volver</i>
+  <h3 class="mt-2 d-flex justify-content-center"><b>Registro de roles</b></h3>
   <hr />
-  <div class="row">
-    <div class="col">
-      <form>
-        <div class="grid p-fluid">
-          <div class="row">
-            <div class="col">
-              <div class="col-12 md:col-4">
-                <div class="p-inputgroup">
-                  <span class="p-inputgroup-addon"
-                    ><i class="pi pi-users"></i
-                  ></span>
-                  <input
-                    type="text"
-                    name="roleName"
-                    [(ngModel)]="roleName"
-                    pInputText
-                    placeholder="Rol"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <button
-            pButton
-            pRipple
-            type="button"
-            label="Guardar los cambios"
-            class="p-button-primary"
-            (click)="save()"
-          ></button>
-        </div>
-      </form>
+  <form (ngSubmit)="onSubmit()" [formGroup]="roleForm">
+    <p-inputGroup>
+      <p-inputGroupAddon>
+        <i class="pi pi-users"></i>
+      </p-inputGroupAddon>
+      <input formControlName="roleName" pInputText placeholder="Rol" />
+    </p-inputGroup>
+    <div
+      *ngIf="roleName.touched && roleName.errors?.['required']"
+      class="mt-2 alert alert-danger"
+    >
+      El campo rol es requerido
     </div>
-  </div>
+    <div
+      *ngIf="roleName.touched && roleName.errors?.['minlength']"
+      class="mt-2 alert alert-danger"
+    >
+      El campo rol debe tener al menos
+      {{roleName.errors?.['minlength']?.requiredLength}}
+      caracteres
+    </div>
+    <div
+      *ngIf="roleName.touched && roleName.errors?.['maxlength']"
+      class="mt-2 alert alert-danger"
+    >
+      El campo rol no debe exceder de
+      {{roleName.errors?.['maxlength']?.requiredLength}}
+      caracteres
+    </div>
+    <hr />
+    <p-button
+      class="d-flex justify-content-end"
+      type="submit"
+      label="Guardar los cambios"
+      [disabled]="roleForm.invalid"
+    >
+    </p-button>
+  </form>
 </p-card>

@@ -4,6 +4,12 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { RoleService } from '../../services/role.service';
 import { Role } from '../../interfaces/role.interface';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-role-register',
@@ -12,46 +18,83 @@ import { Role } from '../../interfaces/role.interface';
   providers: [MessageService],
 })
 export class RoleRegisterComponent implements OnInit {
+  //Creación de la propiedad para el formulario reactivo
+  roleForm!: FormGroup;
+
+  //Getters de los parámetros del formulario reactivo
+  get roleName() {
+    return this.roleForm.get('roleName') as FormControl;
+  }
+
   role!: Role;
   roleId!: number;
-  roleName: string = '';
 
   constructor(
+    private readonly fb: FormBuilder,
     private roleService: RoleService,
     private messageService: MessageService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    //Añadiendo campos y validaciones a la propiedad del formulario reactivo
+    this.roleForm = this.initForm();
+
     if (this.roleService.role) {
       this.roleId = this.roleService.role.roleId || 0;
-      this.roleName = this.roleService.role.roleName;
+      this.roleForm.patchValue({
+        roleName: this.roleService.role.roleName,
+      });
     }
   }
 
-  save() {
+  initForm(): FormGroup {
+    return this.fb.group({
+      roleName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
+        ],
+      ],
+    });
+  }
+
+  onSubmit(): void {
     if (!this.roleId) {
       this.role = {
-        roleName: this.roleName,
+        roleName: this.roleForm.get('roleName')?.value,
       };
 
-      this.roleService
-        .saveRole(this.role)
-        .subscribe((response) => console.log(response));
+      this.roleService.saveRole(this.role).subscribe({
+        next: () => {
+          this.addConfirmation();
+          this.roleForm.reset();
+        },
+        error: (error) => {
+          console.log(error);
+          this.addError();
+        },
+      });
     } else {
       this.role = {
         roleId: this.roleId,
-        roleName: this.roleName,
+        roleName: this.roleForm.get('roleName')?.value,
       };
 
-      this.roleService
-        .updateRole(this.role)
-        .subscribe((response) => this.clearRoleService());
+      this.roleService.updateRole(this.role).subscribe({
+        next: () => {
+          this.addConfirmation();
+          this.roleForm.reset();
+          this.clearRoleService;
+        },
+        error: (error) => {
+          console.log(error);
+          this.addError();
+        },
+      });
     }
-
-    this.addConfirmation();
-
-    this.clearForm();
   }
 
   //METODO QUE LIMPIA LA VARIABLE PERSON DEL SERVICIO
@@ -77,9 +120,12 @@ export class RoleRegisterComponent implements OnInit {
     });
   }
 
-  //LIMPIA EL FORMULARIO DE REGISTROS
-  clearForm() {
-    this.roleId = 0;
-    this.roleName = '';
+  // MUESTRA MENSAJE DE ERROR AL PROCESAR EL REGISTRO
+  addError() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Estado de los datos',
+      detail: 'Sus datos no han podido ser procesados',
+    });
   }
 }
