@@ -9,8 +9,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 import { RoleRegisterComponent } from './components/role-register/role-register.component';
 
@@ -33,8 +31,6 @@ import { RoleRoutingModule } from './role-routing.module';
     FormsModule,
     CardModule,
     ImageModule,
-    InputGroupModule,
-    InputGroupAddonModule,
     ToastModule,
     MessagesModule,
     ConfirmDialogModule,

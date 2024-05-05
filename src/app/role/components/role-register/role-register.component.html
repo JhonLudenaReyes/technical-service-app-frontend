@@ -4,12 +4,12 @@
   <h3 class="mt-2 d-flex justify-content-center"><b>Registro de roles</b></h3>
   <hr />
   <form (ngSubmit)="onSubmit()" [formGroup]="roleForm">
-    <p-inputGroup>
-      <p-inputGroupAddon>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
         <i class="pi pi-users"></i>
-      </p-inputGroupAddon>
+      </span>
       <input formControlName="roleName" pInputText placeholder="Rol" />
-    </p-inputGroup>
+    </div>
     <div
       *ngIf="roleName.touched && roleName.errors?.['required']"
       class="mt-2 alert alert-danger"
